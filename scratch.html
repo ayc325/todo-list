@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My First Web Page</title>
+        <script>
+          // We will use this counter to make sure that each time we make
+    // something, it gets a unique ID.
+    let counter = 0;
+    /**
+     * add() will add a div to the document body.  The div will have an
+     * input and a button, and the div will have a unique id.  The input is
+     * editable.  The button causes the whole div to be removed.
+     */
+    function add() {
+        // Produce the div that holds everything, and give it an id
+        let node = document.createElement("div");
+        node.id = "div" + counter++;
+        // Produce a text input box, give it an initial value, and add it to
+        // the div.
+        let edit = document.createElement("input")
+        edit.type = "text";
+        edit.value = "This is element " + (counter - 1);
+        node.appendChild(edit);
+        // Create a remove button
+        let rmv = document.createElement("button")
+        rmv.innerHTML = "Remove";
+        // When we click the button, we should find the element with the
+        // matching id, and remove it from the document.  When we remove it,
+        // all its children get removed, too.
+        rmv.addEventListener("click", (e) => {
+            let n = document.getElementById(node.id);
+            document.body.removeChild(n)
+        });
+        // Add that button to the node
+        node.appendChild(rmv);
+        // Add the node to the document
+        document.body.appendChild(node)
+    }
+        </script> 
+      </head>
+      <body>
+        <hr/>
+<button onClick="add()">Add an Element</button>
+        <p>
+          Hello from <b>HTML</b>!
+        </p>
+      </body>
+      
+</html>
